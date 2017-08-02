@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorBackground">#900c3f</color>
+    <color name="colorCream">#FDF0D5</color>
+    <color name="colorYellow">#f1c40f</color>
+    <color name="colorDark">#3A3335</color>
+    <color name="colorOrange">#FB4D3D</color>
+    <color name="colorRed">#F10F3F</color>
+    <color name="colorGreen">#82E0AA</color>
+
+    <array name="gridCellColors">
+        <item>@color/colorOrange</item>
+        <item>@color/colorGreen</item>
+        <item>@color/colorRed</item>
+    </array>
+
+</resources>
