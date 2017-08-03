@@ -1,8 +1,9 @@
 package com.swander.shaun.contactsapp;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.app.Activity;
-import android.support.annotation.NonNull;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
@@ -10,14 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
-
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class MainActivity extends Activity  {
     static GridView grid;
@@ -79,5 +74,12 @@ public class MainActivity extends Activity  {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        Log.d("CAHNGE", "onConfigurationChanged: ");
+        grid.setNumColumns(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2);
+        super.onConfigurationChanged(newConfig);
     }
 }
