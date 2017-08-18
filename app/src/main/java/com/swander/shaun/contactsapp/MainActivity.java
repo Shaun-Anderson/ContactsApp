@@ -76,10 +76,11 @@ public class MainActivity extends Activity  {
         });
     }
 
-    @Override
+    /*@Override
     public void onConfigurationChanged(Configuration newConfig) {
         Log.d("CAHNGE", "onConfigurationChanged: ");
         grid.setNumColumns(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2);
         super.onConfigurationChanged(newConfig);
     }
+    */
 }

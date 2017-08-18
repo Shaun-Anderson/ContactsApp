@@ -21,7 +21,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="62dp"
             android:layout_margin="0dp"
             android:layout_marginTop="0dp"
             android:background="@color/colorYellow">
@@ -41,7 +41,6 @@
                 app:srcCompat="@android:drawable/ic_menu_add" />
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -66,6 +65,7 @@
                 android:src="@android:drawable/ic_menu_more"
                 android:tint="@color/colorDark"
                 app:srcCompat="@android:drawable/ic_menu_more" />
+
 
 
         </RelativeLayout>
@@ -94,10 +94,10 @@
             android:layout_weight="1"
             android:columnWidth="100dp"
             android:maxHeight="100dp"
-            android:overScrollMode="never"
             android:minHeight="250dp"
-            android:numColumns="2"
+            android:numColumns="3"
             android:orientation="vertical"
+            android:overScrollMode="never"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
