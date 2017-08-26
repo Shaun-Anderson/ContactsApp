@@ -63,7 +63,7 @@ public class UpdateActivity extends Activity {
 
     public void UpdateContact()
     {
-        Contact updatedContact = new Contact(this, 0, contactName.getText().toString(), contactNumber.getText().toString(), contactEmail.getText().toString(), contactAddress.getText().toString());
+        Contact updatedContact = new Contact(this, 0, contactName.getText().toString(), contactNumber.getText().toString(), contactEmail.getText().toString(), contactAddress.getText().toString(), "Friend");
         MainActivity.contacts.set(contactNum, updatedContact);
     }
 

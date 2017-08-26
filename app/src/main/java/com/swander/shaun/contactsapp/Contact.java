@@ -1,6 +1,8 @@
 package com.swander.shaun.contactsapp;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.media.Image;
 import android.util.Log;
@@ -24,14 +26,16 @@ public class Contact {
     String email;
     String address;
     int backgroundColor;
+    String tag;
 
-    public Contact(Context context, int imageNum, String name, String number, String email, String address) {
+    public Contact(Context context, int imageNum, String name, String number, String email, String address, String tag) {
         this.context = context;
         this.imageNum = imageNum;
         this.name = name;
         this.number = number;
         this.email = email;
         this.address = address;
+        this.tag = tag;
         this.backgroundColor = setColor();
 
     }
@@ -42,7 +46,9 @@ public class Contact {
         this.number = "1234567890";
         this.email = "example@outlook.com";
         this.address = "123 Fake Street";
+        this.tag = "Friend";
         this.backgroundColor = setColor();
+
     }
 
     public int setColor()

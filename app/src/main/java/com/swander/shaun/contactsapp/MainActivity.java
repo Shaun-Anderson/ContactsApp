@@ -1,6 +1,8 @@
 package com.swander.shaun.contactsapp;
 
 import android.content.res.Configuration;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
@@ -25,6 +27,11 @@ public class MainActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        contacts.add(new Contact(this));
+        contacts.add(new Contact(this));
+        contacts.add(new Contact(this));
+        contacts.add(new Contact(this));
+        contacts.add(new Contact(this));
         contacts.add(new Contact(this));
 
         noContactsText = findViewById(R.id.noContactsText);
@@ -75,12 +82,10 @@ public class MainActivity extends Activity  {
             }
         });
     }
+    public void Sort_Tag()
+    {
 
-    /*@Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        Log.d("CAHNGE", "onConfigurationChanged: ");
-        grid.setNumColumns(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE ? 3 : 2);
-        super.onConfigurationChanged(newConfig);
     }
-    */
 }
+
+

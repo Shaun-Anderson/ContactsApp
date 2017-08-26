@@ -44,6 +44,9 @@ public class ViewActivity extends Activity {
         TextView textView = (TextView) findViewById(R.id.contactName);
         textView.setText(MainActivity.contacts.get(intent.getIntExtra("Contact", 0)).name);
 
+        TextView tagText = (TextView) findViewById(R.id.contactTag);
+        tagText.setText(MainActivity.contacts.get(intent.getIntExtra("Contact", 0)).tag);
+
         TextView numberText = (TextView) findViewById(R.id.contactNumber);
         numberText.setText(MainActivity.contacts.get(intent.getIntExtra("Contact", 0)).number);
 
@@ -64,9 +67,7 @@ public class ViewActivity extends Activity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 //v.getId() will give you the image id
-                Log.d("BALH", "onClick: " + contactNum);
                 Intent newIntent = new Intent(getApplicationContext(), UpdateActivity.class);
-                Log.d("BALH", "onClick: " + newIntent);
                 newIntent.putExtra("Contact", contactNum);
                 startActivity(newIntent);
             }

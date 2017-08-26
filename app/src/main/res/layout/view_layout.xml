@@ -64,6 +64,18 @@
             android:textSize="22sp"
             android:textStyle="bold"/>
 
+        <TextView
+            android:id="@+id/contactTag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
     </LinearLayout>
 
     <LinearLayout

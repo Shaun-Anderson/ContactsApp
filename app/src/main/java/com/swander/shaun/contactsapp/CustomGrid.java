@@ -52,9 +52,11 @@ public class CustomGrid extends BaseAdapter{
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.grid_cell, null);
             TextView textView = (TextView) grid.findViewById(R.id.grid_text);
+            TextView tagText = (TextView) grid.findViewById(R.id.grid_tag);
             ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
-            Log.d("", "getView: " + position);
+
             textView.setText(contacts.get(position).name);
+            tagText.setText(contacts.get(position).tag);
             //imageView.setImageResource(contacts[position].imageNum);
 
             grid.setBackgroundColor(MainActivity.contacts.get(position).backgroundColor);

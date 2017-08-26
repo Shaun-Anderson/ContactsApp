@@ -1,27 +1,23 @@
 package com.swander.shaun.contactsapp;
 
 import android.content.Context;
-import android.media.Image;
 import android.util.AttributeSet;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 /**
- * Created by Shaun on 8/2/2017.
+ * Created by Shaun on 8/26/2017.
  */
 
-public class SquareFrameLayout extends LinearLayout {
-    public SquareFrameLayout(Context context) {
+public class SquareImageView extends android.support.v7.widget.AppCompatImageView {
+    public SquareImageView(Context context) {
         super(context);
     }
 
-    public SquareFrameLayout(Context context, AttributeSet attrs) {
+    public SquareImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public SquareFrameLayout(Context context, AttributeSet attrs, int defStyle) {
+    public SquareImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
 
