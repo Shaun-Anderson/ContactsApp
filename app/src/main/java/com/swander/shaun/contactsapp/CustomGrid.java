@@ -26,7 +26,8 @@ public class CustomGrid extends BaseAdapter{
     @Override
     public int getCount() {
         // TODO Auto-generated method stub
-        return contacts.size();
+
+        return MainActivity.myDB.DB_GetCount();
     }
 
     @Override
@@ -48,7 +49,7 @@ public class CustomGrid extends BaseAdapter{
         LayoutInflater inflater = (LayoutInflater) mContext
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-
+            contacts = MainActivity.contacts;
             grid = new View(mContext);
             grid = inflater.inflate(R.layout.grid_cell, null);
             TextView textView = (TextView) grid.findViewById(R.id.grid_text);

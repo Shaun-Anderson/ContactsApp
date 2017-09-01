@@ -1,5 +1,6 @@
 package com.swander.shaun.contactsapp;
 
+import android.content.Context;
 import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -20,6 +21,7 @@ public class MainActivity extends Activity  {
     static GridView grid;
     static TextView noContactsText;
     static List<Contact> contacts = new ArrayList<Contact>();
+    static DatabaseReader myDB;
 
 
     @Override
@@ -27,12 +29,8 @@ public class MainActivity extends Activity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contacts.add(new Contact(this));
-        contacts.add(new Contact(this));
-        contacts.add(new Contact(this));
-        contacts.add(new Contact(this));
-        contacts.add(new Contact(this));
-        contacts.add(new Contact(this));
+        myDB = new DatabaseReader(this);
+        GetData(this);
 
         noContactsText = findViewById(R.id.noContactsText);
         CustomGrid adapter = new CustomGrid(MainActivity.this);
@@ -56,8 +54,9 @@ public class MainActivity extends Activity  {
             public boolean onItemLongClick(AdapterView<?> arg0, View arg1,
                                            int position, long arg3) {
                 Toast.makeText(MainActivity.this, "Removed " + contacts.get(position).name, Toast.LENGTH_SHORT).show();
-                contacts.remove(position);
-
+                myDB.DB_DeleteEntry(contacts.get(position).name);
+                GetData(getBaseContext());
+                Log.d("DB", contacts.toString());
                 grid.invalidateViews();
                 if(MainActivity.contacts.size() != 0)
                 {
@@ -81,7 +80,26 @@ public class MainActivity extends Activity  {
                 startActivity(intent);
             }
         });
+
     }
+
+    public static void GetData(Context context)
+    {
+        contacts.clear();
+            Cursor res = myDB.DB_ReadData();
+            if(res.getCount() == 0)
+            {
+                //NO DATA
+                return;
+            }
+
+            while(res.moveToNext())
+            {
+                Log.d("DB", "GetData: " + res.getString(0) + res.getString(1) + res.getString(2) + res.getString(3) + res.getString(4) +res.getString(5));
+                contacts.add(new Contact(context,res.getInt(0), res.getString(1), res.getString(2), res.getString(3), res.getString(4),res.getString(5)));
+            }
+    }
+
     public void Sort_Tag()
     {
 

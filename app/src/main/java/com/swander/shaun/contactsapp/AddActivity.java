@@ -52,26 +52,22 @@ public class AddActivity extends Activity {
 
     public void AddContact()
     {
-        EditText contactName = (EditText) findViewById(R.id.inputName);
-        EditText contactNumber = (EditText) findViewById(R.id.inputNumber);
-        EditText contactEmail = (EditText) findViewById(R.id.inputEmail);
+        String name = ((EditText) findViewById(R.id.inputName)).getText().toString();
+        String number = ((EditText) findViewById(R.id.inputNumber)).getText().toString();
+        String email = ((EditText) findViewById(R.id.inputEmail)).getText().toString();
+        String address = ((EditText) findViewById(R.id.inputAddress)).getText().toString();
+
+        String tag = "Friend";
 //add LOCATION
       //  EditText contactAddress = (EditText) findViewById(R.id.inputEmail);
-        MainActivity.contacts.add(new Contact(this));
-        MainActivity.grid.invalidateViews();
 
         //MainActivity.contacts.add(new Contact(0,contactName.getText().toString(),contactNumber.getText().toString(),contactEmail.getText().toString()));
-        Log.d("BALH", "AddContact: " + MainActivity.contacts.size());
         //EditText contactName = (EditText) findViewById(R.id.inputName);
 
-//        DatabaseReader mDbHelper = new DatabaseReader(this);
-//        // Gets the data repository in write mode
-//        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-//        // Create a new map of values, where column names are the keys
-//        ContentValues values = new ContentValues();
-//        values.put(SQLHelper.FeedEntry.COLUMN_NAME, contactName.getText().toString());
-//        //values.put(SQLHelper.FeedEntry.COLUMN_ADDRESS, conta);
-//        // Insert the new row, returning the primary key value of the new row
-//        long newRowId = db.insert(SQLHelper.FeedEntry.TABLE_NAME, null, values);
+        DatabaseReader myDB = new DatabaseReader(this);
+        myDB.DB_AddData(name, number, email, address, tag);
+        MainActivity.GetData(this);
+        MainActivity.grid.invalidateViews();
+
     }
 }

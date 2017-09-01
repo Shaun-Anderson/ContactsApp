@@ -44,11 +44,11 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_alignBottom="@+id/addImage"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_weight="1"
-                android:gravity="bottom|center"
+                android:gravity="center"
                 android:text="@string/title"
                 android:textAllCaps="true"
                 android:textColor="@android:color/background_dark"
@@ -61,14 +61,14 @@
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_below="@+id/addImage"
                 android:layout_weight="1"
                 android:gravity="bottom|center_horizontal"
-                android:text="hi"
+                android:text="All"
                 android:textAllCaps="true"
                 android:textColor="@android:color/background_dark"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:layout_below="@+id/addImage" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:id="@+id/FilterButton"

@@ -19,7 +19,7 @@ public class Contact {
     // variable to hold context
     private Context context;
 
-
+    int id;
     int imageNum;
     String name;
     String number;
@@ -28,25 +28,15 @@ public class Contact {
     int backgroundColor;
     String tag;
 
-    public Contact(Context context, int imageNum, String name, String number, String email, String address, String tag) {
+    public Contact(Context context, int id, String name, String number, String email, String address, String tag) {
         this.context = context;
-        this.imageNum = imageNum;
+        this.id = id;
+        this.imageNum = 0;
         this.name = name;
         this.number = number;
         this.email = email;
         this.address = address;
         this.tag = tag;
-        this.backgroundColor = setColor();
-
-    }
-    public Contact(Context context) {
-        this.context = context;
-        this.imageNum = 0;
-        this.name = "Example";
-        this.number = "1234567890";
-        this.email = "example@outlook.com";
-        this.address = "123 Fake Street";
-        this.tag = "Friend";
         this.backgroundColor = setColor();
 
     }

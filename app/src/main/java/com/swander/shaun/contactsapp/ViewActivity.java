@@ -68,7 +68,6 @@ public class ViewActivity extends Activity {
             public void onClick(View v) {
                 //v.getId() will give you the image id
                 Intent newIntent = new Intent(getApplicationContext(), UpdateActivity.class);
-                newIntent.putExtra("Contact", contactNum);
                 startActivity(newIntent);
             }
         });

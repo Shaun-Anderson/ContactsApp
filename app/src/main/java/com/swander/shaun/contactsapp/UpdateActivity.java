@@ -16,6 +16,7 @@ import android.widget.ImageView;
 public class UpdateActivity extends Activity {
 
     int contactNum;
+    String orginalName;
 
     EditText contactName;
     EditText contactNumber;
@@ -29,7 +30,6 @@ public class UpdateActivity extends Activity {
 
         Intent intent = getIntent();
         Log.d("BALH", "onCreate: " + intent.getIntExtra("Contact", 0));
-        contactNum = intent.getIntExtra("Contact", 0);
 
         ImageView addImage = (ImageView) findViewById(R.id.exitButton);
         addImage.setOnClickListener(new View.OnClickListener() {
@@ -57,14 +57,28 @@ public class UpdateActivity extends Activity {
         contactEmail.setText(MainActivity.contacts.get(contactNum).email);
         contactAddress.setText(MainActivity.contacts.get(contactNum).address);
 
-
+        orginalName = contactName.getText().toString();
 
     }
 
     public void UpdateContact()
     {
-        Contact updatedContact = new Contact(this, 0, contactName.getText().toString(), contactNumber.getText().toString(), contactEmail.getText().toString(), contactAddress.getText().toString(), "Friend");
-        MainActivity.contacts.set(contactNum, updatedContact);
+        String name = ((EditText) findViewById(R.id.inputName)).getText().toString();
+        String number = ((EditText) findViewById(R.id.inputNumber)).getText().toString();
+        String email = ((EditText) findViewById(R.id.inputEmail)).getText().toString();
+        String address = ((EditText) findViewById(R.id.inputAddress)).getText().toString();
+
+        String tag = "Friend";
+        //add LOCATION
+        //  EditText contactAddress = (EditText) findViewById(R.id.inputEmail);
+
+        //MainActivity.contacts.add(new Contact(0,contactName.getText().toString(),contactNumber.getText().toString(),contactEmail.getText().toString()));
+        //EditText contactName = (EditText) findViewById(R.id.inputName);
+
+        DatabaseReader myDB = new DatabaseReader(this);
+        myDB.DB_UpdateData(orginalName, name, number, email, address, tag);
+        MainActivity.GetData(this);
+        MainActivity.grid.invalidateViews();
     }
 
 }
