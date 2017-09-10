@@ -1,16 +1,16 @@
 package com.swander.shaun.contactsapp;
 
 import android.content.Context;
-import android.content.res.Configuration;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
@@ -22,6 +22,8 @@ public class MainActivity extends Activity  {
     static TextView noContactsText;
     static List<Contact> contacts = new ArrayList<Contact>();
     static DatabaseReader myDB;
+    static List<String> tags = new ArrayList<String>();
+
 
 
     @Override
