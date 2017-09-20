@@ -41,6 +41,11 @@ public class Contact {
 
     }
 
+    public String getName()
+    {
+        return name;
+    }
+
     public int setColor()
     {
         int[] rainbow = context.getResources().getIntArray(R.array.gridCellColors);

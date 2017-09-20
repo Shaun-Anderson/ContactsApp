@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/friend"
+        android:id="@+id/all"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="Friend"/>
+        android:title="ALL"/>
     <item
-        android:id="@+id/coworker"
+        android:id="@+id/alphabetical"
+        android:icon="@android:drawable/ic_menu_search"
+        android:title="ALPHABETICAL"/>
+    <item
+        android:id="@+id/friend"
         android:icon="@android:drawable/ic_menu_add"
         android:title="CoWorker"/>
     <item

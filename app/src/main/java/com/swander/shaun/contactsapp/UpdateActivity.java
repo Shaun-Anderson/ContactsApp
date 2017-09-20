@@ -3,11 +3,16 @@ package com.swander.shaun.contactsapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.PopupMenu;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 /**
  * Created by Shaun on 8/2/2017.
@@ -23,12 +28,17 @@ public class UpdateActivity extends Activity {
     EditText contactEmail;
     EditText contactAddress;
 
+    String tag = "";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_layout);
 
         Intent intent = getIntent();
+        contactNum = intent.getIntExtra("Contact", 0);
+
         Log.d("BALH", "onCreate: " + intent.getIntExtra("Contact", 0));
 
         ImageView addImage = (ImageView) findViewById(R.id.exitButton);
@@ -57,6 +67,16 @@ public class UpdateActivity extends Activity {
         contactEmail.setText(MainActivity.contacts.get(contactNum).email);
         contactAddress.setText(MainActivity.contacts.get(contactNum).address);
 
+        tag = MainActivity.contacts.get(contactNum).tag;
+
+        final Button tagButton = (Button) findViewById(R.id.tagButton);
+        tagButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                showPopup(tagButton);
+            }
+        });
+        tagButton.setText(tag);
+
         orginalName = contactName.getText().toString();
 
     }
@@ -68,7 +88,6 @@ public class UpdateActivity extends Activity {
         String email = ((EditText) findViewById(R.id.inputEmail)).getText().toString();
         String address = ((EditText) findViewById(R.id.inputAddress)).getText().toString();
 
-        String tag = "Friend";
         //add LOCATION
         //  EditText contactAddress = (EditText) findViewById(R.id.inputEmail);
 
@@ -79,6 +98,24 @@ public class UpdateActivity extends Activity {
         myDB.DB_UpdateData(orginalName, name, number, email, address, tag);
         MainActivity.GetData(this);
         MainActivity.grid.invalidateViews();
+    }
+
+    public void showPopup(View v) {
+        PopupMenu popup = new PopupMenu(this, v, Gravity.BOTTOM);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.tags_menu, popup.getMenu());
+
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            public boolean onMenuItemClick(MenuItem item) {
+                Toast.makeText(UpdateActivity.this,"You Clicked : " + item.getTitle(),Toast.LENGTH_SHORT).show();
+                tag = item.getTitle().toString();
+                Button p1_button = (Button)findViewById(R.id.tagButton);
+                p1_button.setText(item.getTitle());
+                return true;
+            }
+        });
+
+        popup.show();
     }
 
 }
