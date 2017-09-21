@@ -27,7 +27,7 @@ public class CustomGrid extends BaseAdapter{
     public int getCount() {
         // TODO Auto-generated method stub
 
-        return MainActivity.myDB.DB_GetCount();
+        return MainActivity.contacts.size();
     }
 
     @Override

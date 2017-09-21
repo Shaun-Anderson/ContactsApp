@@ -27,10 +27,9 @@ import java.util.List;
 public class MainActivity extends Activity  {
     static GridView grid;
     static TextView noContactsText;
+    static List<Contact> _contacts = new ArrayList<Contact>();
     static List<Contact> contacts = new ArrayList<Contact>();
     static DatabaseReader myDB;
-    static List<String> tags = new ArrayList<String>();
-
 
 
     @Override
@@ -39,7 +38,6 @@ public class MainActivity extends Activity  {
         setContentView(R.layout.activity_main);
 
         myDB = new DatabaseReader(this);
-        GetData(this);
 
         noContactsText = findViewById(R.id.noContactsText);
         CustomGrid adapter = new CustomGrid(MainActivity.this);
@@ -96,6 +94,10 @@ public class MainActivity extends Activity  {
                 showPopup(sortImage);
             }
         });
+
+        GetData(this);
+
+
     }
 
     public static void GetData(Context context)
@@ -113,6 +115,34 @@ public class MainActivity extends Activity  {
                 Log.d("DB", "GetData: " + res.getString(0) + res.getString(1) + res.getString(2) + res.getString(3) + res.getString(4) +res.getString(5));
                 contacts.add(new Contact(context,res.getInt(0), res.getString(1), res.getString(2), res.getString(3), res.getString(4),res.getString(5)));
             }
+
+        Sort_Alphabetical();
+
+
+        grid.invalidateViews();
+
+    }
+
+    public static void GetDataTag(Context context,String tag)
+    {
+        contacts.clear();
+        Cursor res = myDB.DB_ReadData_Tag(tag);
+        if(res.getCount() == 0)
+        {
+            //NO DATA
+            return;
+        }
+
+        while(res.moveToNext())
+        {
+            Log.d("DB", "GetData: " + res.getString(0) + res.getString(1) + res.getString(2) + res.getString(3) + res.getString(4) +res.getString(5));
+            contacts.add(new Contact(context,res.getInt(0), res.getString(1), res.getString(2), res.getString(3), res.getString(4),res.getString(5)));
+        }
+
+        Sort_Alphabetical();
+
+        grid.invalidateViews();
+
     }
 
     public void showPopup(View v) {
@@ -136,13 +166,24 @@ public class MainActivity extends Activity  {
 
         switch (type)
         {
-            case "ALPHABETICAL":
-                Sort_Alphabetical();
+            case "FRIEND":
+                GetDataTag(this, "Friend");
+                break;
+            case "FAMILY":
+                GetDataTag(this, "Family");
+                break;
+            case "COWORKER":
+                GetDataTag(this, "CoWorker");
+                break;
+            case "ALL":
+                GetData(this);
                 break;
         }
+
+
     }
 
-    public void Sort_Alphabetical()
+    static void Sort_Alphabetical()
     {
         Log.d("SORT", "ALPHA");
 
@@ -155,12 +196,6 @@ public class MainActivity extends Activity  {
             }
 
         });
-
-        grid.invalidateViews();
-    }
-
-    public void Sort_Tag()
-    {
 
     }
 }

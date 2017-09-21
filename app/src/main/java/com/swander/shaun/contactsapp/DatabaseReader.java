@@ -117,6 +117,13 @@ public class DatabaseReader extends SQLiteOpenHelper {
         return res;
     }
 
+    public Cursor DB_ReadData_Tag(String tag)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME + " where Tags = '" + tag+ "'",null);
+        return res;
+    }
+
 
     public int DB_GetCount()
     {

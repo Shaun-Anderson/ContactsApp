@@ -5,15 +5,16 @@
         android:icon="@android:drawable/ic_menu_search"
         android:title="ALL"/>
     <item
-        android:id="@+id/alphabetical"
+        android:id="@+id/coworker"
         android:icon="@android:drawable/ic_menu_search"
-        android:title="ALPHABETICAL"/>
+        android:title="COWORKER"/>
+
     <item
         android:id="@+id/friend"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="CoWorker"/>
+        android:title="FRIEND"/>
     <item
         android:id="@+id/family"
         android:icon="@android:drawable/ic_menu_add"
-        android:title="Family"/>
+        android:title="FAMILY"/>
 </menu>
