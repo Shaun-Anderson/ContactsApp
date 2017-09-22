@@ -52,7 +52,6 @@ public class AddActivity extends Activity {
         addButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 AddContact();
-                finish();
             }
         });
 
@@ -83,7 +82,7 @@ public class AddActivity extends Activity {
         popup.show();
     }
 
-
+    //Gets the data for each of the
     public void AddContact()
     {
         String name = ((EditText) findViewById(R.id.inputName)).getText().toString();
@@ -91,11 +90,52 @@ public class AddActivity extends Activity {
         String email = ((EditText) findViewById(R.id.inputEmail)).getText().toString();
         String address = ((EditText) findViewById(R.id.inputAddress)).getText().toString();
 
+        //Validation checks for number and email
+        if(name == "")
+        {
+            Toast.makeText(AddActivity.this, "Name cannot be empty", Toast.LENGTH_SHORT).show();
+        }
+        if(!isValidEmail(email))
+        {
+            Toast.makeText(AddActivity.this, "Invalid Email", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!isValidPhone(number))
+        {
+            Toast.makeText(AddActivity.this, "Invalid Number", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
         DatabaseReader myDB = new DatabaseReader(this);
         myDB.DB_AddData(name, number, email, address, tag);
         MainActivity.GetData(this);
         MainActivity.grid.invalidateViews();
 
+        finish();
+
+    }
+
+
+    //Validation Checks
+
+    //Taken from: https://stackoverflow.com/questions/12947620/email-address-validation-in-android-on-edittext
+    public final static boolean isValidEmail(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.EMAIL_ADDRESS.matcher(target).matches();
+        }
+    }
+    //End of taken section
+
+    public final static boolean isValidPhone(CharSequence target) {
+        if (target == null) {
+            return false;
+        } else {
+            return android.util.Patterns.PHONE.matcher(target).matches();
+
+        }
     }
 }

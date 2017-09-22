@@ -27,7 +27,6 @@ import java.util.List;
 public class MainActivity extends Activity  {
     static GridView grid;
     static TextView noContactsText;
-    static List<Contact> _contacts = new ArrayList<Contact>();
     static List<Contact> contacts = new ArrayList<Contact>();
     static DatabaseReader myDB;
 
@@ -81,9 +80,7 @@ public class MainActivity extends Activity  {
         ImageView addImage = (ImageView) findViewById(R.id.addImage);
         addImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                //v.getId() will give you the image id
                 Intent intent = new Intent(getApplicationContext(), AddActivity.class);
-                // String message = editText.getText().toString();
                 startActivity(intent);
             }
         });
