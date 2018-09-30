@@ -4,5 +4,3 @@ This application is a basic contact app that allows the creating, editing and re
 
 This app has a pretty average directory layout and should be easy enough for someone to go through.
 
-GitHub link:
-https://github.com/SpectreKnight/ContactsApp
